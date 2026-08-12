@@ -3,7 +3,7 @@
 
 Items: {
 	SWORD: {
-		DisplayName: "S W O R D"
+		DisplayName: S W O R D
 		Tooltip:
 			'''
 			Template of an item

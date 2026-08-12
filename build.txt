@@ -1,3 +1,3 @@
-displayName = Gem Spears
+displayName = Dairox's Mod
 author = Dairox
 version = 0.1

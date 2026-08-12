@@ -1,0 +1,46 @@
+# === Visual Studio ===
+*.user
+*.userosscache
+*.suo
+*.cache
+*.docstates
+*.vs/
+.vs/
+
+# === Сборка и кеш ===
+bin/
+obj/
+build/
+*.log
+*.tmp
+
+# === JetBrains (если используешь Rider) ===
+.idea/
+*.sln.iml
+
+# === Файлы отладки ===
+*.pdb
+*.mdb
+
+# === Резервные копии ===
+*~
+*.bak
+*.swp
+
+# === Файлы, которые генерирует tModLoader ===
+*.tmod
+# Обычно они лежат в папке выше, но на всякий случай:
+
+# === Пользовательские локальные настройки ===
+*.config.user
+*.userprefs
+
+# === Игровые логи и сохранения (если они случайно попадут в папку мода) ===
+*.log
+*.dat
+*.json
+*.db
+
+# === Временные файлы Windows ===
+Thumbs.db
+Desktop.ini
