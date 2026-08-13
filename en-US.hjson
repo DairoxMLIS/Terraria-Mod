@@ -1,12 +1,15 @@
 Mods: {
 	Dairox_Mod: {
-		Projectiles.AncientSpearProjectile.DisplayName: Ancient Spear Projectile
-
 		Items: {
 			AncientSpear: {
-				Tooltip: ""
 				DisplayName: Ancient Spear
+				Tooltip: ""
 			}
+		}
+
+		Projectiles: {
+			AncientSpearProjectile.DisplayName: Ancient Spear Projectile
+			AncientSpearProjectile_2.DisplayName: Ancient Spear Projectile_2
 		}
 	}
 }

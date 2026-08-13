@@ -1,4 +1,5 @@
 using Dairox_Mod.Content.Dusts;
+using Dairox_Mod.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -10,6 +11,7 @@ namespace Dairox_Mod.Content.Projectiles
     {
         protected virtual float HoldoutRangeMin => -10f;
         protected virtual float HoldoutRangeMax => 24f;
+        protected bool fired = false;
 
         public override void SetDefaults()
         {
@@ -24,7 +26,11 @@ namespace Dairox_Mod.Content.Projectiles
             Projectile.hide = true; // скрывает, пока не в руке
             Projectile.scale = 2f;
             Projectile.aiStyle = -1;
-           
+
+            Main.projFrames[Projectile.type] = 2;
+            Projectile.frame = 0;
+            Projectile.frameCounter = 0;
+
 
         }
 
@@ -41,7 +47,18 @@ namespace Dairox_Mod.Content.Projectiles
             {
                 Projectile.timeLeft = duration;
             }
-            
+
+            Projectile.frameCounter++;
+            if (Projectile.frameCounter >= 8) // меняем кадр каждые 8 тиков
+            {
+                Projectile.frameCounter = 0;
+                Projectile.frame++;
+                if (Projectile.frame >= Main.projFrames[Projectile.type])
+                {
+                    Projectile.frame = 0; // зацикливаем
+                }
+            }
+
 
             Projectile.velocity = Vector2.Normalize(Projectile.velocity); // Velocity isn't used in this spear implementation, but we use the field to store the spear's attack direction.
 
@@ -91,6 +108,21 @@ namespace Dairox_Mod.Content.Projectiles
                     Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<AncientSparkle>(), Alpha: 128, Scale: 0.3f);
                 }
             }
+            if (progress >=0.9f && !fired)
+            {
+                fired = true;
+
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    Projectile.Center, 
+                    Projectile.velocity * 5f,
+                    ModContent.ProjectileType<AncientSpearProjectile_2>(),
+                    Projectile.damage,
+                    Projectile.knockBack,
+                    Projectile.owner);
+
+            }
+
 
 
             return false; // Don't execute vanilla AI.
