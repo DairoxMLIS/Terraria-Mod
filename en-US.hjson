@@ -5,11 +5,17 @@ Mods: {
 				DisplayName: Ancient Spear
 				Tooltip: ""
 			}
+
+			AncientBow: {
+				DisplayName: Ancient Bow
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
 			AncientSpearProjectile.DisplayName: Ancient Spear Projectile
 			AncientSpearProjectile_2.DisplayName: Ancient Spear Projectile_2
+			AncientBolt.DisplayName: Ancient Bolt
 		}
 	}
 }
