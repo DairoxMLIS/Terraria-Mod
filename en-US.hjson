@@ -10,12 +10,65 @@ Mods: {
 				DisplayName: Ancient Bow
 				Tooltip: ""
 			}
+
+			AncientStaff: {
+				DisplayName: Ancient Staff
+				Tooltip: ""
+			}
+
+			AncientSpiritStaff: {
+				DisplayName: Ancient Spirit Staff
+				Tooltip: ""
+			}
+
+			AncientLeggings: {
+				DisplayName: Ancient Leggings
+				Tooltip: ""
+			}
+
+			AncientBreastplate: {
+				DisplayName: Ancient Breastplate
+				Tooltip: ""
+			}
+
+			AncientHalo: {
+				SetBonus: Mods.Dairox_Mod.Items.AncientHalo.SetBonus
+				DisplayName: Ancient Halo
+				Tooltip: ""
+			}
+
+			AncientHeavyHelmet: {
+				SetBonus: Mods.Dairox_Mod.Items.AncientHeavyHelmet.SetBonus
+				DisplayName: Ancient Heavy Helmet
+				Tooltip: ""
+			}
+
+			AncientHelmet: {
+				SetBonus: Mods.Dairox_Mod.Items.AncientHelmet.SetBonus
+				DisplayName: Ancient Helmet
+				Tooltip: ""
+			}
+
+			AncientHood: {
+				SetBonus: Mods.Dairox_Mod.Items.AncientHood.SetBonus
+				DisplayName: Ancient Hood
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
 			AncientSpearProjectile.DisplayName: Ancient Spear Projectile
 			AncientSpearProjectile_2.DisplayName: Ancient Spear Projectile_2
 			AncientBolt.DisplayName: Ancient Bolt
+			AncientMagicBall.DisplayName: Ancient Magic Ball
+			AncientSpirit.DisplayName: Ancient Spirit
+		}
+
+		Buffs: {
+			AncientSpiritBuff: {
+				DisplayName: Ancient Spirit Buff
+				Description: The Ancient Spirit will fight for you.
+			}
 		}
 	}
 }

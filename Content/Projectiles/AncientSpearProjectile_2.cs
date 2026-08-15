@@ -26,7 +26,7 @@ namespace Dairox_Mod.Content.Projectiles
         public override void AI()
 
         {
-            Lighting.AddLight(Projectile.Center, 0f, 0f, 1f);
+            Lighting.AddLight(Projectile.Center, 0.4f, 0.4f, 0.7f);
 
             Projectile.frameCounter++;
             if (Projectile.frameCounter >= 8) // меняем кадр каждые 8 тиков

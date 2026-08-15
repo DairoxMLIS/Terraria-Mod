@@ -98,12 +98,12 @@ namespace Dairox_Mod.Content.Projectiles
             if (!Main.dedServ)
             {
                 // These dusts are added later, for the 'ExampleMod' effect
-                if (Main.rand.NextBool(3))
+                if (Main.rand.NextBool(11))
                 {
                     Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<AncientSparkle>(), Projectile.velocity.X * 2f, Projectile.velocity.Y * 2f, Alpha: 128, Scale: 1.2f);
                 }
 
-                if (Main.rand.NextBool(4))
+                if (Main.rand.NextBool(10))
                 {
                     Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<AncientSparkle>(), Alpha: 128, Scale: 0.3f);
                 }
