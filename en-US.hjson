@@ -54,6 +54,11 @@ Mods: {
 				DisplayName: Ancient Hood
 				Tooltip: ""
 			}
+
+			AncientBook: {
+				DisplayName: Ancient Book
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
@@ -62,6 +67,7 @@ Mods: {
 			AncientBolt.DisplayName: Ancient Bolt
 			AncientMagicBall.DisplayName: Ancient Magic Ball
 			AncientSpirit.DisplayName: Ancient Spirit
+			Sparkle.DisplayName: Sparkle
 		}
 
 		Buffs: {
@@ -70,5 +76,7 @@ Mods: {
 				Description: The Ancient Spirit will fight for you.
 			}
 		}
+
+		NPCs.SpiritOfLight.DisplayName: Spirit Of Light
 	}
 }
