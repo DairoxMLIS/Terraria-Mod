@@ -2,58 +2,88 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 using Dairox_Mod.Content.Dusts;
-namespace Dairox_Mod.Content.Projectiles
+
+namespace Dairox_Mod.Content.Projectiles;
+
+public class AncientBolt : ModProjectile
 {
-    public class AncientBolt : ModProjectile
+    private const int MaxPenetrate = 3;
+    private const int TimeLeft = 600;
+
+    private const int TrailDustId = 206;
+    private const int TrailLength = 10;
+
+    private const float TrailStepMultiplier = 0.1f;
+    private const float TrailScale = 1.5f;
+    private const int AlphaFade = 25;
+
+    public override void SetDefaults()
     {
-        public override void SetDefaults()
+        Projectile.width = 1;
+        Projectile.height = 1;
+
+        Projectile.friendly = true;
+        Projectile.DamageType = DamageClass.Ranged;
+
+        Projectile.penetrate = MaxPenetrate;
+        Projectile.timeLeft = TimeLeft;
+
+        Projectile.aiStyle = ProjAIStyleID.Arrow;
+        Projectile.arrow = true;
+        Projectile.alpha = 0;
+    }
+
+    public override void AI()
+    {
+        SpawnTrail();
+        UpdateAlpha();
+    }
+
+    private void SpawnTrail()
+    {
+        if (Projectile.alpha >= 170)
+            return;
+
+        Vector2 step =
+            Projectile.velocity * TrailStepMultiplier;
+
+        for (int i = 0; i < TrailLength; i++)
         {
-            Projectile.width = 1;
-            Projectile.height = 1;
-            Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Ranged;
-            Projectile.penetrate = 3;      // Проходит через 3 врагов
-            Projectile.timeLeft = 600;     // Живет 10 секунд
-            Projectile.aiStyle = ProjAIStyleID.Arrow; // Использует ИИ стрелы
-            Projectile.arrow = true;       // Считается стрелой
-            Projectile.alpha = 0;        // Делает спрайт почти прозрачным!
+            Dust dust = Dust.NewDustPerfect(
+                Projectile.position - step * i,
+                TrailDustId,
+                Vector2.Zero,
+                Projectile.alpha,
+                default,
+                TrailScale
+            );
+
+            dust.noGravity = true;
         }
 
-        public override void AI()
+        if (Main.rand.NextBool(10))
         {
-            // Светящийся шлейф (секрет эффекта пульсирующего лука)
-            if (Projectile.alpha < 170) // Начинаем рисовать шлейф после небольшой задержки[reference:5]
-            {
-                Vector2 step = Projectile.velocity / 10f;
-                for (int i = 0; i < 10; i++)
-                {
-                    // Создаем частицы пыли (Dust)
-                    Dust dust = Dust.NewDustPerfect(
-                        Projectile.position - step * i, // Позиция позади снаряда
-                        206, // ID пыли. 206 = светящаяся, похожая на лазер[reference:6]
-                        Vector2.Zero,                   // Скорость
-                        Projectile.alpha,               // Прозрачность
-                        default,
-                        1.5f // Масштаб
-                    );
-                    dust.noGravity = true; // Пыль не падает
-                }
-                if (Main.rand.NextBool(10))
-                {
-                    Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<AncientSparkle>(), Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
-                }
-            }
-
-            // Постепенно уменьшаем прозрачность (эффект появления)[reference:7]
-            if (Projectile.alpha > 0)
-            {
-                Projectile.alpha -= 25;
-                if (Projectile.alpha < 0)
-                {
-                    Projectile.alpha = 0;
-                }
-            }
+            Dust.NewDust(
+                Projectile.position + Projectile.velocity,
+                Projectile.width,
+                Projectile.height,
+                ModContent.DustType<AncientSparkle>(),
+                Projectile.velocity.X * 0.5f,
+                Projectile.velocity.Y * 0.5f
+            );
         }
+    }
+
+    private void UpdateAlpha()
+    {
+        if (Projectile.alpha <= 0)
+            return;
+
+        Projectile.alpha -= AlphaFade;
+
+        if (Projectile.alpha < 0)
+            Projectile.alpha = 0;
     }
 }

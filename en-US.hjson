@@ -68,6 +68,11 @@ Mods: {
 			AncientMagicBall.DisplayName: Ancient Magic Ball
 			AncientSpirit.DisplayName: Ancient Spirit
 			Sparkle.DisplayName: Sparkle
+			SkyFireBall.DisplayName: Sky Fire Ball
+			SkyFlameCore.DisplayName: Sky Flame Core
+			SkyFlameStar.DisplayName: Sky Flame Star
+			SkyFlameStarShard.DisplayName: Sky Flame Star Shard
+			SkyFlameSpear.DisplayName: Sky Flame Spear
 		}
 
 		Buffs: {
@@ -77,6 +82,11 @@ Mods: {
 			}
 		}
 
-		NPCs.SpiritOfLight.DisplayName: Spirit Of Light
+		NPCs: {
+			SpiritOfLight.DisplayName: Spirit Of Light
+			AzarothBody.DisplayName: Azaroth Body
+			AzarothCross.DisplayName: Azaroth Cross
+			AzarothSword.DisplayName: Azaroth Sword
+		}
 	}
 }
